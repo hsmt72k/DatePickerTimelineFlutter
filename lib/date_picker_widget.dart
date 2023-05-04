@@ -228,13 +228,15 @@ class DatePickerController {
     _datePickerState = state;
   }
 
-  void jumpToSelection() {
+  void jumpToSelection(context) {
     assert(_datePickerState != null,
         'DatePickerController is not attached to any DatePicker View.');
 
     // jump to the current Date
-    _datePickerState!._controller
-        .jumpTo(_calculateDateOffset(_datePickerState!._currentDate!));
+    _datePickerState?._currentDate = DateTime.now();
+    _datePickerState?._controller.jumpTo(
+        _calculateDateOffset(_datePickerState!._currentDate!) -
+            MediaQuery.of(context).size.width * 0.05);
   }
 
   /// This function will animate the Timeline to the currently selected Date
