@@ -234,9 +234,8 @@ class DatePickerController {
 
     // jump to the current Date
     _datePickerState?._currentDate = DateTime.now();
-    _datePickerState?._controller.jumpTo(
-        _calculateDateOffset(_datePickerState!._currentDate!) -
-            MediaQuery.of(context).size.width * 0.05);
+    DateTime targetDate = DateTime.now().subtract(const Duration(days: 2));
+    _datePickerState!._controller.jumpTo(_calculateDateOffset(targetDate));
   }
 
   /// This function will animate the Timeline to the currently selected Date
