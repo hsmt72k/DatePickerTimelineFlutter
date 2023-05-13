@@ -244,9 +244,12 @@ class DatePickerController {
     assert(_datePickerState != null,
         'DatePickerController is not attached to any DatePicker View.');
 
+    _datePickerState?._currentDate = DateTime.now();
+    DateTime targetDate = DateTime.now().subtract(const Duration(days: 2));
+
     // animate to the current date
     _datePickerState!._controller.animateTo(
-        _calculateDateOffset(_datePickerState!._currentDate!),
+        _calculateDateOffset(targetDate),
         duration: duration,
         curve: curve);
   }
