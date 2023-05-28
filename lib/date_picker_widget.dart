@@ -244,7 +244,7 @@ class DatePickerController {
 
     // jump to the current Date
     _datePickerState?._currentDate = instructionDateTime;
-    DateTime targetDate = DateTime.now().subtract(const Duration(days: 2));
+    DateTime targetDate = instructionDateTime.subtract(const Duration(days: 2));
     _datePickerState!._controller.jumpTo(_calculateDateOffset(targetDate));
   }
 
