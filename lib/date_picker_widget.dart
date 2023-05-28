@@ -238,6 +238,16 @@ class DatePickerController {
     _datePickerState!._controller.jumpTo(_calculateDateOffset(targetDate));
   }
 
+  void jumpToInstructionDateTime(DateTime instructionDateTime) {
+    assert(_datePickerState != null,
+    'DatePickerController is not attached to any DatePicker View.');
+
+    // jump to the current Date
+    _datePickerState?._currentDate = instructionDateTime;
+    DateTime targetDate = DateTime.now().subtract(const Duration(days: 2));
+    _datePickerState!._controller.jumpTo(_calculateDateOffset(targetDate));
+  }
+
   /// This function will animate the Timeline to the currently selected Date
   void animateToSelection(
       {duration = const Duration(milliseconds: 500), curve = Curves.linear}) {
